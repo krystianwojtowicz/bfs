@@ -1,0 +1,32 @@
+.grid-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-row {
+  display: flex;
+}
+
+.obstacle {
+  width: 30px;
+  height: 30px;
+  background-color: grey;
+  border: 1px solid black;
+}
+
+.grid-cell-white {
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.path {
+  background-color: red;
+}
+
+.cell {
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+}
