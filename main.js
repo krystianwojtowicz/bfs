@@ -11,7 +11,7 @@ function displayGrid(grid, startRow, startCol, endRow, endCol, shortestPath) {
 
     for (let j = 0; j < numCols; j++) {
       const cell = document.createElement("div");
-      cell.className = grid[i][j] === 1 ? "obstacle" : "grid-cell-white";
+      cell.className = grid[i][j] === 1 ? "obstacle cell" : "grid-white cell";
 
       if (i === startRow && j === startCol) {
         cell.classList.add("start-cell");

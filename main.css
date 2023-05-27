@@ -8,17 +8,11 @@
 }
 
 .obstacle {
-  width: 30px;
-  height: 30px;
   background-color: grey;
-  border: 1px solid black;
 }
 
-.grid-cell-white {
-  width: 30px;
-  height: 30px;
+.grid-white {
   background-color: white;
-  border: 1px solid black;
 }
 
 .path {
