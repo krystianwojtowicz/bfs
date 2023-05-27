@@ -1,3 +1,17 @@
+const grid = [
+  [0, 0, 1, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+];
+const start = [];
+const end = [];
+let startRow;
+let startCol;
+let endRow;
+let endCol;
+
 function displayGrid(grid, startRow, startCol, endRow, endCol, shortestPath) {
   const numRows = grid.length;
   const numCols = grid[0].length;
@@ -112,18 +126,19 @@ function bfs(grid, startRow, startCol, endRow, endCol) {
   }
 }
 
-const grid = [
-  [0, 0, 1, 0, 0],
-  [0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0],
-];
+function generatePoints(start, end, grid) {
+  do {
+    startRow = Math.floor(Math.random() * grid.length);
+    startCol = Math.floor(Math.random() * grid[0].length);
+    endRow = Math.floor(Math.random() * grid.length);
+    endCol = Math.floor(Math.random() * grid[0].length);
+    start = [startRow, startCol];
+    end = [endRow, endCol];
+  } while (startRow === endRow && startCol === endCol);
+  console.log(start, end);
+}
 
-const startRow = 0;
-const startCol = 0;
-const endRow = 4;
-const endCol = 4;
+generatePoints(start, end, grid);
 
 // Find the shortest path using BFS
 const shortestPath = bfs(grid, startRow, startCol, endRow, endCol);
