@@ -1,16 +1,13 @@
-const grid = [
-  [0, 0, 1, 0, 0],
-  [0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0],
-];
 const start = [];
 const end = [];
 let startRow;
 let startCol;
 let endRow;
 let endCol;
+let grid = [];
+const numRows = 5;
+const numCols = 5;
+const numObstacles = 5;
 
 function displayGrid(grid, startRow, startCol, endRow, endCol, shortestPath) {
   const numRows = grid.length;
@@ -126,19 +123,61 @@ function bfs(grid, startRow, startCol, endRow, endCol) {
   }
 }
 
-function generatePoints(start, end, grid) {
+// function generatePoints(start, end, grid) {
+//   do {
+//     startRow = Math.floor(Math.random() * grid.length);
+//     startCol = Math.floor(Math.random() * grid[0].length);
+//     endRow = Math.floor(Math.random() * grid.length);
+//     endCol = Math.floor(Math.random() * grid[0].length);
+//     start = [startRow, startCol];
+//     end = [endRow, endCol];
+//   } while (startRow === endRow && startCol === endCol);
+// }
+function generatePoints(grid) {
+  let numRows = grid.length;
+  let numCols = grid[0].length;
+  // let startRow, startCol, endRow, endCol;
+  let start, end;
+
   do {
-    startRow = Math.floor(Math.random() * grid.length);
-    startCol = Math.floor(Math.random() * grid[0].length);
-    endRow = Math.floor(Math.random() * grid.length);
-    endCol = Math.floor(Math.random() * grid[0].length);
+    startRow = Math.floor(Math.random() * numRows);
+    startCol = Math.floor(Math.random() * numCols);
+    endRow = Math.floor(Math.random() * numRows);
+    endCol = Math.floor(Math.random() * numCols);
     start = [startRow, startCol];
     end = [endRow, endCol];
-  } while (startRow === endRow && startCol === endCol);
+  } while (
+    grid[startRow][startCol] === 1 ||
+    grid[endRow][endCol] === 1 ||
+    (startRow === endRow && startCol === endCol)
+  );
+
   console.log(start, end);
+  return [startRow, startCol, endRow, endCol];
 }
 
-generatePoints(start, end, grid);
+function generateGrid(numRows, numCols, numObstacles) {
+  const grid = new Array(numRows)
+    .fill(null)
+    .map(() => new Array(numCols).fill(0));
+
+  while (numObstacles > 0) {
+    const row = Math.floor(Math.random() * numRows);
+    const col = Math.floor(Math.random() * numCols);
+
+    if (grid[row][col] === 0) {
+      grid[row][col] = 1;
+      numObstacles--;
+    }
+  }
+
+  return grid;
+}
+
+grid = generateGrid(numRows, numCols, numObstacles);
+console.log(grid);
+
+generatePoints(grid);
 
 // Find the shortest path using BFS
 const shortestPath = bfs(grid, startRow, startCol, endRow, endCol);
