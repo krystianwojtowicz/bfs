@@ -1,5 +1,5 @@
-const start = [];
-const end = [];
+let start = [];
+let end = [];
 let startRow;
 let startCol;
 let endRow;
@@ -123,21 +123,9 @@ function bfs(grid, startRow, startCol, endRow, endCol) {
   }
 }
 
-// function generatePoints(start, end, grid) {
-//   do {
-//     startRow = Math.floor(Math.random() * grid.length);
-//     startCol = Math.floor(Math.random() * grid[0].length);
-//     endRow = Math.floor(Math.random() * grid.length);
-//     endCol = Math.floor(Math.random() * grid[0].length);
-//     start = [startRow, startCol];
-//     end = [endRow, endCol];
-//   } while (startRow === endRow && startCol === endCol);
-// }
 function generatePoints(grid) {
   let numRows = grid.length;
   let numCols = grid[0].length;
-  // let startRow, startCol, endRow, endCol;
-  let start, end;
 
   do {
     startRow = Math.floor(Math.random() * numRows);
@@ -151,9 +139,6 @@ function generatePoints(grid) {
     grid[endRow][endCol] === 1 ||
     (startRow === endRow && startCol === endCol)
   );
-
-  console.log(start, end);
-  return [startRow, startCol, endRow, endCol];
 }
 
 function generateGrid(numRows, numCols, numObstacles) {
@@ -175,7 +160,6 @@ function generateGrid(numRows, numCols, numObstacles) {
 }
 
 grid = generateGrid(numRows, numCols, numObstacles);
-console.log(grid);
 
 generatePoints(grid);
 
