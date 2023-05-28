@@ -1,9 +1,4 @@
-let start = [];
-let end = [];
-let startRow;
-let startCol;
-let endRow;
-let endCol;
+let startRow, startCol, endRow, endCol;
 let grid = [];
 const numRows = 5;
 const numCols = 5;
@@ -132,8 +127,6 @@ function generatePoints(grid) {
     startCol = Math.floor(Math.random() * numCols);
     endRow = Math.floor(Math.random() * numRows);
     endCol = Math.floor(Math.random() * numCols);
-    start = [startRow, startCol];
-    end = [endRow, endCol];
   } while (
     grid[startRow][startCol] === 1 ||
     grid[endRow][endCol] === 1 ||
